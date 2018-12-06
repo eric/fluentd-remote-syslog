@@ -12,11 +12,11 @@ WORKDIR /home/fluent
 # https://rubygems.org/gems/fluent-plugin-kubernetes_metadata_filter
 
 RUN apk --no-cache --update add sudo build-base ruby-dev && \
-    sudo -u fluent gem install --no-document fluent-plugin-record-reformer -v 0.9.1 && \
-    sudo -u fluent gem install --no-document fluent-plugin-kubernetes_metadata_filter -v 2.1.5 && \
-    sudo -u fluent gem install --no-document fluent-plugin-remote_syslog -v 1.0.0 && \
+    gem install --no-document fluent-plugin-record-reformer -v 0.9.1 && \
+    gem install --no-document fluent-plugin-kubernetes_metadata_filter -v 2.1.5 && \
+    gem install --no-document fluent-plugin-remote_syslog -v 1.0.0 && \
     rm -rf /home/fluent/.gem/ruby/2.3.0/cache/*.gem && \
-    sudo -u fluent gem sources -c && \
+    gem sources -c && \
     apk del sudo build-base ruby-dev && \
     rm -rf /var/cache/apk/*
 

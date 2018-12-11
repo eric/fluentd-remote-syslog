@@ -9,7 +9,7 @@ WORKDIR /home/fluent
 # https://rubygems.org/gems/fluent-plugin-kubernetes_metadata_filter
 
 RUN apk add --update --virtual .build-deps \
-        sudo build-base ruby-dev \
+        sudo build-base ruby-dev git \
 
  # cutomize following instruction as you wish
  && gem install --no-document fluent-plugin-kubernetes_metadata_filter -v 2.1.5 \

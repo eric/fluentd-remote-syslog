@@ -13,7 +13,14 @@ RUN apk add --update --virtual .build-deps \
 
  # cutomize following instruction as you wish
  && gem install --no-document fluent-plugin-kubernetes_metadata_filter -v 2.1.5 \
- && gem install --no-document fluent-plugin-remote_syslog -v 1.0.0
+ && git clone --depth 1 -b remove-placeholder-validation git@github.com:eric/fluent-plugin-remote_syslog.git \
+ && ( cd fluent-plugin-remote_syslog
+      && gem build fluent-plugin-remote_syslog.gemspec
+      && gem install ./fluent-plugin-remote_syslog-1.0.0.gem
+    )
+ && rm -rf fluent-plugin-remote_syslog
+
+ # && gem install --no-document fluent-plugin-remote_syslog -v 1.0.0
 
  && gem sources --clear-all \
  && apk del .build-deps \
